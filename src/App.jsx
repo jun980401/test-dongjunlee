@@ -32,16 +32,13 @@ function App() {
     const goal = [127.0286427, 37.2634485];
     const option = 'traoptimal';
 
-    const initialDirectionUrl = new URL(
-        '/api/map-direction/v1/driving',
-        window.location.origin
-    );
+    const initialDirectionUrl = new URL('/api/map-direction/v1/driving');
     initialDirectionUrl.search = new URLSearchParams({
         start: start.join(','),
         goal: goal.join(','),
         option: option,
     }).toString();
-
+    console.log('initialDirectionUrl', initialDirectionUrl);
     useEffect(() => {
         const fetchInitialData = async () => {
             try {
@@ -75,8 +72,7 @@ function App() {
                 ];
 
                 const reverseGeocodeUrl = new URL(
-                    '/api/map-reversegeocode/v2/gc',
-                    window.location.origin
+                    '/api/map-reversegeocode/v2/gc'
                 );
                 reverseGeocodeUrl.search = new URLSearchParams({
                     coords: midPoint.join(','),
@@ -99,8 +95,7 @@ function App() {
                 const midAddr = gcData.results[0].region.area2.name;
 
                 const chargerUrl = new URL(
-                    'charge/service/EvInfoServiceV2/getEvSearchList',
-                    window.location.origin
+                    'charge/service/EvInfoServiceV2/getEvSearchList'
                 );
                 chargerUrl.search = new URLSearchParams({
                     ServiceKey:
@@ -157,10 +152,7 @@ function App() {
                 let shortestDurationRoute = null;
 
                 for (const coord of chargeStationCoords) {
-                    const routeUrl = new URL(
-                        '/api/map-direction/v1/driving',
-                        window.location.origin
-                    );
+                    const routeUrl = new URL('/api/map-direction/v1/driving');
                     routeUrl.search = new URLSearchParams({
                         start: start.join(','),
                         goal: goal.join(','),
