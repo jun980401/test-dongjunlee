@@ -1,0 +1,16 @@
+[[redirects]]
+from = "/api/*"
+  to = "https://naveropenapi.apigw.ntruss.com/:splat"  
+  status = 200
+  force = true
+
+[[redirects]]
+from = "/charge/*"
+  to = "http://openapi.kepco.co.kr/:splat"  
+  status = 200
+  force = true
+
+[[redirects]]
+from = "/*"
+  to = "/index"  
+  status = 200

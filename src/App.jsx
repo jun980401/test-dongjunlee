@@ -32,9 +32,7 @@ function App() {
     const goal = [127.0286427, 37.2634485];
     const option = 'traoptimal';
 
-    const initialDirectionUrl = new URL(
-        'https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving'
-    );
+    const initialDirectionUrl = new URL('/api/map-direction/v1/driving');
     initialDirectionUrl.search = new URLSearchParams({
         start: start.join(','),
         goal: goal.join(','),
@@ -73,8 +71,7 @@ function App() {
                 ];
 
                 const reverseGeocodeUrl = new URL(
-                    'https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc',
-                    window.location.origin
+                    '/api/map-reversegeocode/v2/gc'
                 );
                 reverseGeocodeUrl.search = new URLSearchParams({
                     coords: midPoint.join(','),
@@ -97,7 +94,7 @@ function App() {
                 const midAddr = gcData.results[0].region.area2.name;
 
                 const chargerUrl = new URL(
-                    'http://openapi.kepco.co.kr/service/EvInfoServiceV2/getEvSearchList'
+                    'charge/service/EvInfoServiceV2/getEvSearchList'
                 );
                 chargerUrl.search = new URLSearchParams({
                     ServiceKey:
@@ -154,9 +151,7 @@ function App() {
                 let shortestDurationRoute = null;
 
                 for (const coord of chargeStationCoords) {
-                    const routeUrl = new URL(
-                        'https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving'
-                    );
+                    const routeUrl = new URL('/api/map-direction/v1/driving');
                     routeUrl.search = new URLSearchParams({
                         start: start.join(','),
                         goal: goal.join(','),
